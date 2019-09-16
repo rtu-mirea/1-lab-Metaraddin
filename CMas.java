@@ -16,8 +16,18 @@ public class CMas {
 
         if (choice == 0) {
             for (int i = 0; i < LEN; i++) {
-                System.out.print("Элемент №" + Integer.toString(i) + ": ");
-                mMas[i] = scan.nextLong();
+                boolean check = true;
+                while (check){
+                    System.out.print("Элемент №" + Integer.toString(i) + ": ");
+                    if (scan.hasNextLong()){
+                        mMas[i] = scan.nextLong();
+                    }
+                    else{
+                        scan.next();
+                        continue;
+                    }
+                    check = false;
+                }
             }
         }
         else if (choice == 1) {
@@ -27,9 +37,7 @@ public class CMas {
         }
     }
 
-    public String print() {
-        return Arrays.toString(mMas);
-    }
+    public String print() { return Arrays.toString(mMas); }
 
     public String printRev() {
         String res = "[" + Long.toString(mMas[mMas.length - 1]);
