@@ -7,22 +7,35 @@ public class CMas {
     private long[] mMas;
 
     CMas() {
-        System.out.println("\nКак вводить массив? (0 - с клавиатуры, 1 - генератор):");
         Scanner scan = new Scanner(System.in);
-        int choice = scan.nextInt();
+        boolean check = true;
+        int choice = -1;
+        while (check) {
+            System.out.println("\nКак вводить массив? (0 - с клавиатуры, 1 - генератор):");
+            if (scan.hasNextInt()){
+                choice = scan.nextInt();
+            }
+            else{
+                System.out.print("Допускается только int.");
+                scan.next();
+                continue;
+            }
+            check = false;
+        }
 
         final int LEN = 10;
         mMas = new long[LEN];
 
         if (choice == 0) {
             for (int i = 0; i < LEN; i++) {
-                boolean check = true;
+                check = true;
                 while (check){
                     System.out.print("Элемент №" + Integer.toString(i) + ": ");
                     if (scan.hasNextLong()){
                         mMas[i] = scan.nextLong();
                     }
                     else{
+                        System.out.println("Допускается только long.");
                         scan.next();
                         continue;
                     }

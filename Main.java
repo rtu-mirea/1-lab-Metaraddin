@@ -34,9 +34,20 @@ public class Main {
                     "2 - Вывод массива с конца\n" +
                     "3 - Сдвиг влево на N\n" +
                     "4 - Сортировка\n" +
-                    "0 - Выход\n" +
-                    "Что Вы хотите сделать: ");
-            choice = scan.nextInt();
+                    "0 - Выход\n");
+            boolean check = true;
+            while (check) {
+                System.out.println("Что Вы хотите сделать?: ");
+                if (scan.hasNextInt()){
+                    choice = scan.nextInt();
+                }
+                else{
+                    System.out.println("Допускается только int.");
+                    scan.next();
+                    continue;
+                }
+                check = false;
+            }
             if (choice == 1) {
                 System.out.println(mas.print());
             }
