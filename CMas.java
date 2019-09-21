@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Scanner;
 
 public class CMas {
@@ -61,11 +62,21 @@ public class CMas {
     }
 
     public void shift(int dis) {
-        int len = mMas.length;
-        long[] res = new long[len];
-        System.arraycopy(mMas, dis, res, 0, len - dis);
-        System.arraycopy(mMas, 0, res, len - dis, dis);
-        mMas = res;
+        for (int i = 0; i <= dis/2; i++) {
+            long temp = mMas[i];
+            mMas[i] = mMas[dis - 1 - i];
+            mMas[dis - 1 - i] = temp;
+        }
+        for (int i = 0; i <= (mMas.length - 1 - dis)/2; i++) {
+            long temp = mMas[i + dis];
+            mMas[i + dis] = mMas[mMas.length - 1 - i];
+            mMas[mMas.length - 1 - i] = temp;
+        }
+        for (int i = 0; i <= (mMas.length - 1)/2; i++) {
+            long temp = mMas[i];
+            mMas[i] = mMas[mMas.length - 1 - i];
+            mMas[mMas.length - 1 - i] = temp;
+        }
     }
 
     public void sort() {
