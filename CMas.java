@@ -11,6 +11,20 @@ public class CMas {
         Scanner scan = new Scanner(System.in);
         boolean check = true;
         int choice = -1;
+        int len = 0;
+        while (check) {
+            System.out.println("Введите длинну массива: ");
+            if (scan.hasNextInt()) {
+                len = scan.nextInt();
+            }
+            else {
+                System.out.println("Допускается только int.");
+                scan.next();
+                continue;
+            }
+            check = false;
+        }
+        check = true;
         while (check) {
             System.out.println("\nКак вводить массив? (0 - с клавиатуры, 1 - генератор):");
             if (scan.hasNextInt()){
@@ -24,11 +38,10 @@ public class CMas {
             check = false;
         }
 
-        final int LEN = 10;
-        mMas = new long[LEN];
+        mMas = new long[len];
 
         if (choice == 0) {
-            for (int i = 0; i < LEN; i++) {
+            for (int i = 0; i < len; i++) {
                 check = true;
                 while (check){
                     System.out.print("Элемент №" + Integer.toString(i) + ": ");
@@ -45,7 +58,7 @@ public class CMas {
             }
         }
         else if (choice == 1) {
-            for (int i = 0; i < LEN; i++) {
+            for (int i = 0; i < len; i++) {
                 mMas[i] = (int) (Math.random() * (200)) - 100;
             }
         }
@@ -79,22 +92,27 @@ public class CMas {
         }
     }
 
-    public void sort() {
+    public void sort(long middle) {
         int len = mMas.length;
         long[] res = new long[len];
 
         int j = 0;
         for (int i = 0; i < len; i++) {
-            if (mMas[i] < 0) {
+            if (mMas[i] < middle) {
                 res[j] = mMas[i];
                 j++;
             }
         }
         for (int i = 0; i < len; i++) {
-            if (mMas[i] > 0) {
+            if (mMas[i] > middle) {
                 res[j] = mMas[i];
                 j++;
             }
+        }
+        while (j < res.length - 1) {
+            System.out.println("check");
+            res[j] = middle;
+            j++;
         }
         mMas = res;
     }

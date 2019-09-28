@@ -34,34 +34,25 @@ public class Main {
                     "2 - Вывод массива с конца\n" +
                     "3 - Сдвиг влево на N\n" +
                     "4 - Сортировка\n" +
-                    "0 - Выход\n");
-            boolean check = true;
-            while (check) {
-                System.out.println("Что Вы хотите сделать?: ");
-                if (scan.hasNextInt()){
-                    choice = scan.nextInt();
-                }
-                else{
-                    System.out.println("Допускается только int.");
-                    scan.next();
-                    continue;
-                }
-                check = false;
-            }
-            if (choice == 1) {
-                System.out.println(mas.print());
-            }
-            else if (choice == 2) {
-                System.out.println(mas.printRev());
-            }
-            else if (choice == 3) {
-                System.out.print("Введите N: ");
-                mas.shift(scan.nextInt());
-                System.out.println(mas.print());
-            }
-            else if (choice == 4) {
-                mas.sort();
-                System.out.println(mas.print());
+                    "0 - Выход\n" +
+                    "Что Вы хотите сделать: ");
+            choice = scan.nextInt();
+            switch (choice) {
+                case (1):
+                    System.out.println(mas.print());
+                    break;
+                case (2):
+                    System.out.println(mas.printRev());
+                    break;
+                case (3):
+                    System.out.print("Введите N: ");
+                    mas.shift(scan.nextInt());
+                    System.out.println(mas.print());
+                    break;
+                case (4):
+                    mas.sort(0);
+                    System.out.println(mas.print());
+                    break;
             }
         }
     }
