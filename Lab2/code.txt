@@ -1,0 +1,6 @@
+Ccode test = new Cceode();
+lala testl =new Class();
+teslll = new Class (lalala);
+gdfgsd
+new Class();
+final int;
