@@ -9,15 +9,24 @@ public class CSongsList {
         songs = new ArrayList<CSong>();
     }
 
-    public void vote(CUser inp, String song) {
+    public String print() {
+        String res = "";
+        for (int i = 0; i < songs.size(); i++) {
+            res += i + ") " + songs.get(i).getName();
+        }
+        return res;
+    }
+
+    public boolean vote(CUser inp, String song) {
         for (int i = 0; i < songs.size(); i++) {
             if (songs.get(i).getName() == song) {
                 songs.get(i).toVote(inp);
-                return;
+                return true;
             }
         }
         songs.add(new CSong(song));
         songs.get(songs.size()).toVote(inp);
+        return false;
     }
 
     public String result(int len) {
