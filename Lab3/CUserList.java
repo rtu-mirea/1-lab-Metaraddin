@@ -11,14 +11,14 @@ public class CUserList {
 
     public CUser getUser(int ind) { return users.get(ind); }
 
-    public String registration(String name, String login, String password, boolean isAdmin) {
+    public boolean registration(String name, String login, String password, boolean isAdmin) {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).checkLogin(login)) {
-                return "Login already taken.";
+                return false;
             }
         }
         users.add(new CUser(name, login, password, isAdmin));
-        return "Registration completed successfully.";
+        return true;
     }
 
     public int enter(String login, String password) {

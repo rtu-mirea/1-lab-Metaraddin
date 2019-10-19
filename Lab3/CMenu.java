@@ -43,7 +43,11 @@ public class CMenu {
         String login = scan.next();
         System.out.print("Password: ");
         String password = scan.next();
-        users.registration(name, login, password, false);
+        if(users.registration(name, login, password, false)) {
+            System.out.println("Registration completed successfully.");
+        } else {
+            System.out.println("Login already taken.");
+        }
         startMenu();
     }
 
