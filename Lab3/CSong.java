@@ -8,10 +8,21 @@ public class CSong {
 
     public CSong(String nameInp) {
         name = nameInp;
+        vote = new ArrayList<CUser>();
+    }
+
+    public boolean checkUser(CUser inp) {
+        for (CUser user : vote) {
+            if (user.getName().equals(inp.getName())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public CSong() {
         name = "None";
+        vote = new ArrayList<CUser>();
     }
 
     public String getName() { return name; }

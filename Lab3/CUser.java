@@ -18,12 +18,12 @@ public class CUser {
     public boolean getIsAdmin() { return isAdmin; }
 
     public boolean checkLogin(String loginInp) {
-        if (login == loginInp) { return true; }
+        if (login.equals(loginInp)) { return true; }
         return false;
     }
 
     public boolean checkPassword(String passwordInp) {
-        if (password == passwordInp) { return true; }
+        if (password.equals(passwordInp)) { return true; }
         return false;
     }
 }

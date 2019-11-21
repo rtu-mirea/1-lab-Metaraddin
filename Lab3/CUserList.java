@@ -9,23 +9,26 @@ public class CUserList {
         users = new ArrayList<CUser>();
     }
 
-    public String registration(String name, String login, String password, boolean isAdmin) {
+    public CUser getUser(int ind) { return users.get(ind); }
+
+    public boolean registration(String name, String login, String password, boolean isAdmin) {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).checkLogin(login)) {
-                return "Login already taken.";
+                return false;
             }
         }
         users.add(new CUser(name, login, password, isAdmin));
-        return "Registration completed successfully.";
+        return true;
     }
 
-    public CUser enter(String login, String password) {
+    public int enter(String login, String password) {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).checkLogin(login)) {
                 if (users.get(i).checkPassword(password)) {
-                    return users.get(i);
+                    return i;
                 }
             }
         }
+        return -1;
     }
 }
