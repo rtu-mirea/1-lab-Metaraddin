@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RegistrationWindow extends JDialog {
-    Singleton singleton;
 
     private JLabel labelName = new JLabel("Name: ");
     private JLabel labelLogin = new JLabel("Login: ");
@@ -17,7 +16,6 @@ public class RegistrationWindow extends JDialog {
     private JButton buttonRegistration = new JButton("Registration");
 
     public RegistrationWindow(JDialog owner) {
-        //super("Регистрация");
         super(owner, "Registration");
         this.setBounds(100, 100, 250, 100);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -16,7 +16,6 @@ public class LoginWindow extends JDialog {
     private JButton buttonRegistration = new JButton("Registration");
 
     public LoginWindow(JFrame owner) {
-        //super("Авторизация");
         super(owner, "Log in");
         this.setBounds(100, 100, 250, 100);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -1,7 +1,5 @@
 package com.company;
 
-//import com.sun.tools.javac.Main;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -93,8 +91,6 @@ public class MainAppWindow extends JFrame {
         Singleton.SINGLETON.userList.registration("Admin", "admin", "admin", true);
         Singleton.SINGLETON.userList.registration("test", "test", "test", false);
         Singleton.SINGLETON.userList.registration("test2", "test2", "test2", false);
-        //LoginWindow loginWindow = new LoginWindow();
-        //loginWindow.setVisible(true);
         JFrame mainAppWindow = new JFrame("Main App Window");
         mainAppWindow.setContentPane(new MainAppWindow().panel1);
         mainAppWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

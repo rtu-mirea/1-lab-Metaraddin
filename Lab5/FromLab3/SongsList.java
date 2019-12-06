@@ -42,14 +42,12 @@ public class SongsList {
         String res = "";
         int j = 1;
         while (j <= len) {
-            //System.out.println(!songs.isEmpty());
             int reference = 0;
             for (int i = 0; i < songs.size(); i++) {
                 if (songs.get(i).getVote() > songs.get(reference).getVote()) {
                     reference = i;
                 }
             }
-            //System.out.println(reference);
             res += j + ") " + songs.get(reference).getName() + "\n";
             j++;
             songs.remove(reference);
