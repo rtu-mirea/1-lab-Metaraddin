@@ -5,21 +5,23 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RegistrationWindow extends JFrame {
+public class RegistrationWindow extends JDialog {
     Singleton singleton;
 
-    private JLabel labelName = new JLabel("Имя: ");
-    private JLabel labelLogin = new JLabel("Логин: ");
-    private JLabel labelPassword = new JLabel("Пароль: ");
+    private JLabel labelName = new JLabel("Name: ");
+    private JLabel labelLogin = new JLabel("Login: ");
+    private JLabel labelPassword = new JLabel("Password: ");
     private JTextField inputName = new JTextField("", 5);
     private JTextField inputLogin = new JTextField("", 5);
     private JTextField inputPassword = new JTextField("", 5);
-    private JButton buttonRegistration = new JButton("Регистрация");
+    private JButton buttonRegistration = new JButton("Registration");
 
-    public RegistrationWindow() {
-        super("Регистрация");
+    public RegistrationWindow(JDialog owner) {
+        //super("Регистрация");
+        super(owner, "Registration");
         this.setBounds(100, 100, 250, 100);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setModal(true);
 
         Container container = this.getContentPane();
         container.setLayout(new GridLayout(4, 2, 2, 2));

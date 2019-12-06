@@ -5,20 +5,22 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginWindow extends JFrame {
+public class LoginWindow extends JDialog {
     Singleton singleton;
 
-    private JLabel labelLogin = new JLabel("Логин: ");
-    private JLabel labelPassword = new JLabel("Пароль: ");
+    private JLabel labelLogin = new JLabel("Login: ");
+    private JLabel labelPassword = new JLabel("Password: ");
     private JTextField inputLogin = new JTextField("", 5);
     private JTextField inputPassword = new JTextField("", 5);
-    private JButton buttonEnter = new JButton("Войти");
-    private JButton buttonRegistration = new JButton("Регистрация");
+    private JButton buttonEnter = new JButton("Enter");
+    private JButton buttonRegistration = new JButton("Registration");
 
-    public LoginWindow() {
-        super("Авторизация");
+    public LoginWindow(JFrame owner) {
+        //super("Авторизация");
+        super(owner, "Log in");
         this.setBounds(100, 100, 250, 100);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setModal(true);
 
         Container container = this.getContentPane();
         container.setLayout(new GridLayout(3, 2, 2, 2));
@@ -36,7 +38,7 @@ public class LoginWindow extends JFrame {
 
     class ButtonRegisterEventListener implements ActionListener {
         public void actionPerformed (ActionEvent e) {
-            RegistrationWindow registrationWindow = new RegistrationWindow();
+            RegistrationWindow registrationWindow = new RegistrationWindow(LoginWindow.this);
             registrationWindow.setVisible(true);
         }
     }

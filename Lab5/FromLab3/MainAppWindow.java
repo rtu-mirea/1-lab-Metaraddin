@@ -1,12 +1,14 @@
 package com.company;
 
-import com.sun.tools.javac.Main;
+//import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
-public class MainAppWindow {
+public class MainAppWindow extends JFrame {
     private JList list1;
     private JButton changeUserButton;
     private JPanel panel1;
@@ -19,12 +21,12 @@ public class MainAppWindow {
         changeUserButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                LoginWindow loginWindow = new LoginWindow();
+                LoginWindow loginWindow = new LoginWindow(MainAppWindow.this);
                 loginWindow.setVisible(true);
                 upd();
             }
         });
-    }
+    panel1.addFocusListener(new FocusAdapter() { } );}
 
     private void upd() {
         if (Singleton.SINGLETON.currentUser == null) {
