@@ -13,6 +13,7 @@ public class MainWindow {
     private JButton getDifficultyButton;
     private JButton saveToFileButton;
     private JButton readFromFileButton;
+    private JButton exitButton;
 
     public MainWindow() {
         addTestButton.addActionListener(new ActionListener() {
@@ -62,6 +63,12 @@ public class MainWindow {
             public void actionPerformed(ActionEvent actionEvent) {
                 Singleton.SINGLETON.testList.saveAllFromList(Singleton.SINGLETON.testList.readFromFileFis("testList.txt"));
                 updList();
+            }
+        });
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                System.exit(1);
             }
         });
     }
