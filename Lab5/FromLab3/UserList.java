@@ -11,6 +11,8 @@ public class UserList {
 
     public User getUser(int ind) { return users.get(ind); }
 
+    public int getSize() { return users.size(); }
+
     public boolean registration(String name, String login, String password, boolean isAdmin) {
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).checkLogin(login)) {

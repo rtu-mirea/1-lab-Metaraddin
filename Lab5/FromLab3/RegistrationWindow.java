@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RegistrationWindow extends JFrame {
+    Singleton singleton;
+
     private JLabel labelName = new JLabel("Имя: ");
     private JLabel labelLogin = new JLabel("Логин: ");
     private JLabel labelPassword = new JLabel("Пароль: ");
@@ -38,7 +40,7 @@ public class RegistrationWindow extends JFrame {
             if (inputName.getText().trim().length() > 0
                     && inputLogin.getText().trim().length() > 0
                     && inputPassword.getText().trim().length() > 0) {
-                if (Main.userList.registration(inputName.getText(), inputLogin.getText(), inputPassword.getText(), false)) {
+                if (Singleton.SINGLETON.userList.registration(inputName.getText(), inputLogin.getText(), inputPassword.getText(), false)) {
                     JOptionPane.showMessageDialog(null, "Спасибо за регистрацию, " + inputName.getText() + "!", "Успешная регистрация", JOptionPane.PLAIN_MESSAGE);
                     RegistrationWindow.this.dispose();
                 }

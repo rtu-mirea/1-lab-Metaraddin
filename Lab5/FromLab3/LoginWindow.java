@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginWindow extends JFrame {
+    Singleton singleton;
+
     private JLabel labelLogin = new JLabel("Логин: ");
     private JLabel labelPassword = new JLabel("Пароль: ");
     private JTextField inputLogin = new JTextField("", 5);
@@ -42,9 +44,9 @@ public class LoginWindow extends JFrame {
     class ButtonEnterEventListener implements ActionListener {
         public void actionPerformed (ActionEvent e) {
             if (inputLogin.getText().trim().length() > 0 && inputPassword.getText().trim().length() > 0) {
-                int userNum = Main.userList.enter(inputLogin.getText(), inputPassword.getText());
+                int userNum = Singleton.SINGLETON.userList.enter(inputLogin.getText(), inputPassword.getText());
                 if (userNum != -1) {
-                    Main.currentUser = Main.userList.getUser(userNum);
+                    Singleton.SINGLETON.currentUser = Singleton.SINGLETON.userList.getUser(userNum);
                     LoginWindow.this.dispose();
                 }
                 else {

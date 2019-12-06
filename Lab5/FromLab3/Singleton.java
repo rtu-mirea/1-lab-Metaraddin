@@ -1,6 +1,6 @@
 package com.company;
 
-public class Singleton {
+/*public class Singleton {
     private static final Singleton INSTANCE = new Singleton();
 
     private Singleton() {
@@ -19,4 +19,19 @@ public class Singleton {
     public SongsList getSongsList() { return songsList; }
     public UserList getUserList() { return userList; }
     public User getCurrentUser() { return currentUser; }
+
+    public void setCurrentUser(User user) { currentUser = user; }
+}*/
+
+public class Singleton {
+    public static final Singleton SINGLETON = new Singleton();
+    public SongsList songsList;
+    public UserList userList;
+    public User currentUser;
+
+    private Singleton() {
+        songsList = new SongsList();
+        userList = new UserList();
+        //currentUser = new User();
+    }
 }
