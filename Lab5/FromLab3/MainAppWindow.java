@@ -6,14 +6,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
 public class MainAppWindow extends JFrame {
     private JList list1;
     private JButton changeUserButton;
     private JPanel panel1;
     private JButton endDayButton;
-    private JButton deleteSongButton;
+    private JButton voteForSelectedButton;
     private JButton suggestASongButton;
 
     public MainAppWindow() {
@@ -26,26 +25,53 @@ public class MainAppWindow extends JFrame {
                 upd();
             }
         });
-    panel1.addFocusListener(new FocusAdapter() { } );}
+    panel1.addFocusListener(new FocusAdapter() { } );
+        suggestASongButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                Suggest suggest = new Suggest();
+                suggest.setVisible(true);
+                updList();
+            }
+        });
+        voteForSelectedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                if (list1.getSelectedIndex() >= 0 && list1.getSelectedIndex() < Singleton.SINGLETON.songsList.getSize()) {
+                    JOptionPane.showMessageDialog(null, Singleton.SINGLETON.songsList.vote(Singleton.SINGLETON.currentUser, Singleton.SINGLETON.songsList.getSong(list1.getSelectedIndex()).getName()), "Vote", JOptionPane.PLAIN_MESSAGE);
+                }
+            }
+        });
+        endDayButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                EndDay endDay = new EndDay();
+                endDay.setVisible(true);
+                updList();
+            }
+        });
+    }
 
     private void upd() {
         if (Singleton.SINGLETON.currentUser == null) {
             list1.setEnabled(false);
+            clearList();
             endDayButton.setEnabled(false);
-            deleteSongButton.setEnabled(false);
+            voteForSelectedButton.setEnabled(false);
             suggestASongButton.setEnabled(false);
         }
         else if (Singleton.SINGLETON.currentUser.getIsAdmin()) {
+            clearList();
             list1.setEnabled(true);
             suggestASongButton.setEnabled(false);
-            deleteSongButton.setEnabled(false);
+            voteForSelectedButton.setEnabled(false);
             endDayButton.setEnabled(true);
         }
         else {
             list1.setEnabled(true);
             updList();
             suggestASongButton.setEnabled(true);
-            deleteSongButton.setEnabled(true);
+            voteForSelectedButton.setEnabled(true);
             endDayButton.setEnabled(false);
         }
     }
@@ -53,14 +79,20 @@ public class MainAppWindow extends JFrame {
     private void updList() {
         DefaultListModel listModel = new DefaultListModel();
         list1.setModel(listModel);
-        for (int i = 0; i < Singleton.SINGLETON.userList.getSize(); i++) {
-            listModel.addElement(Singleton.SINGLETON.userList.getUser(i).getName());
+        for (int i = 0; i < Singleton.SINGLETON.songsList.getSize(); i++) {
+            listModel.addElement(Singleton.SINGLETON.songsList.getSong(i).getName());
         }
+    }
+
+    private void clearList() {
+        list1.removeAll();
     }
 
     public static void main(String[] args) {
         Singleton singleton = Singleton.SINGLETON;
         Singleton.SINGLETON.userList.registration("Admin", "admin", "admin", true);
+        Singleton.SINGLETON.userList.registration("test", "test", "test", false);
+        Singleton.SINGLETON.userList.registration("test2", "test2", "test2", false);
         //LoginWindow loginWindow = new LoginWindow();
         //loginWindow.setVisible(true);
         JFrame mainAppWindow = new JFrame("Main App Window");

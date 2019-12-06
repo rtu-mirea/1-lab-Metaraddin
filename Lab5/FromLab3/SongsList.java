@@ -9,6 +9,9 @@ public class SongsList {
         songs = new ArrayList<Song>();
     }
 
+    public Song getSong(int ind) { return songs.get(ind); }
+    public int getSize() { return songs.size(); }
+
     public String print() {
         String res = "";
         for (int i = 0; i < songs.size(); i++) {
