@@ -12,6 +12,7 @@ public class MainAppWindow extends JFrame {
     private JButton endDayButton;
     private JButton voteForSelectedButton;
     private JButton suggestASongButton;
+    private JButton exitButton;
 
     public MainAppWindow() {
         upd();
@@ -46,6 +47,12 @@ public class MainAppWindow extends JFrame {
                 EndDay endDay = new EndDay();
                 endDay.setVisible(true);
                 updList();
+            }
+        });
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(1);
             }
         });
     }
